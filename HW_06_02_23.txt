@@ -1,0 +1,23 @@
+    create database if not exists sportsclub;
+    use sportsclub;
+        CREATE TABLE IF NOT exists instructors(
+instructor_id int primary key auto_increment,
+first_name varchar(64) not null,
+last_name varchar(64) not null
+);
+ CREATE TABLE IF NOT exists tikets(
+tiket_id int primary key auto_increment,
+tiket_type varchar(64) not null,
+cost_hour int
+);
+     CREATE TABLE IF NOT exists custumers(
+custumer_id int primary key auto_increment,
+instructor_id int,
+tiket_id int,
+first_name varchar(64) not null,
+last_name varchar(64) not null,
+dt_payment datetime DEFAULT CURRENT_TIMESTAMP,
+dt_visit datetime DEFAULT CURRENT_TIMESTAMP,
+FOREIGN KEY (instructor_id) REFERENCES instructors(instructor_id),
+FOREIGN KEY (tiket_id) REFERENCES tikets(tiket_id)
+);
